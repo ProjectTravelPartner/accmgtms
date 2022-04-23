@@ -15,10 +15,10 @@ func main() {
 	dbclient.Init()
 	defer dbclient.Close()
 	router := gin.New()
-	router.Run(fmt.Sprintf(":%v", port))
 	group := router.Group("accmgts")
 
 	group.GET("/account/:id", api.AccountGet)
 	group.POST("/account", api.AccountCreate)
-	group.DELETE("/account/:id", api.AccountDelete)
+	router.Run(fmt.Sprintf(":%v", port))
+	//group.DELETE("/account/:id", api.AccountDelete)
 }
