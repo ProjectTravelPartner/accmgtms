@@ -19,6 +19,7 @@ func main() {
 
 	group.GET("/account/:id", api.AccountGet)
 	group.POST("/account", api.AccountCreate)
+	group.GET("/login", api.AccountLogin)
 	router.Run(fmt.Sprintf(":%v", port))
 	//group.DELETE("/account/:id", api.AccountDelete)
 }

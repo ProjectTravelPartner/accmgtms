@@ -22,3 +22,11 @@ func AccountGet(c *gin.Context) {
 	out, _ = dao.AccountGet(id)
 	commonclient.RespOK(c, out)
 }
+
+func AccountLogin(c *gin.Context) {
+	var out uint64
+	email := c.Query("email")
+	pwd := c.Query("pwd")
+	out = dao.VerifyUser(email, pwd)
+	commonclient.RespOK(c, out)
+}

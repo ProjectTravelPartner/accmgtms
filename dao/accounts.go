@@ -39,3 +39,20 @@ func AccountGet(id uint64) (models.Account, error) {
 	return data, nil
 
 }
+
+func VerifyUser(email string, pwd string) uint64 {
+	qry := `SELECT 
+				id
+			FROM
+				accounts
+			WHERE
+				email=?
+			AND
+				pwd=?
+			limit 1`
+	rows := dbclient.QueryRow(qry, email, pwd)
+	var out uint64
+	rows.Scan(&out)
+	return out
+
+}
